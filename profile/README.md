@@ -9,10 +9,11 @@ Most of the repositories are connected to each other via submodules. The followi
 graph TD;
     ratioGUI-->PlExA;
     PlExA-->oRatio;
-    oRatio-->ratioCore;
-    ratioCore-->RiDDLe;
-    RiDDLe-->SeMiTONE;
+    oRatio-->RiDDLe;
+    RiDDLe-->utils;
+    oRatio-->SeMiTONE;
     SeMiTONE-->json;
+    json-->utils;
     PyRatio-->PlExA;
     ratio4J-->PlExA;
     RatiOS-->PlExA;
@@ -32,13 +33,7 @@ It is worth noting that, as in any constraint-network, *SeMiTONE* is unable to s
 
 The second fundamental component is the **RiDDLe** (Rational Domain Definition Language) language parser. The *RiDDLe* language takes inspiration from the DDL.1 language. The current proposal, however, introduces a pure object-oriented approach to the definition of timeline-based domains and problem definitions and, therefore, allows an higher decomposition of the domain model and an increase of modularity with a consequent reduction of the the overall complexity at design phase. Furthermore, thanks to the object-oriented approach, UML modeling features can be naturally exploited to enhance the design phase. In addition, aspects related to first order logic are further made explicit, allowing a uniform representation of planning and scheduling concepts. Finally, although the language is based on a multi-sorted first order logic core, from which the object-oriented approach comes, it has been designed for allowing extensibility and is, hence, agnostic of complex types such as state-variables or resources.
 
-This component, specifically, allows solvers, with a minimum of implementation effort, to parse the *RiDDLe* language.
-
-### [ratioCore](https://github.com/ratioSolver/ratioCore)
-
-The **ratioCore** is a component that allows the management of the objects within the logical environment described by the *RiDDLe* language. This component provides the high-level functions to handle complex *RiDDLe* *types*, *methods*, *constructors*, creating new objects, etc. In other words, it provides high-level services for the management of the logical environment, relieving the solvers who use it of the burden of their management.
-
-This component greatly simplifies the task of developing a new solver, allowing to focus solely on the search and heuristics aspects.
+This component greatly simplifies the task of developing a new solver, allowing to focus solely on the search and heuristics aspects. Specifically, it allows solvers, with a minimum of implementation effort, to parse the *RiDDLe* language. Additionally, it allows the management of the objects within the logical environment described by the *RiDDLe* language. This component provides the high-level functions to handle *RiDDLe* complex *types*, *methods*, *constructors*, creating new objects, etc. In other words, it provides high-level services for the management of the logical environment, relieving the solvers who use it of the burden of their management.
 
 ### [oRatio](https://github.com/ratioSolver/oRatio)
 
